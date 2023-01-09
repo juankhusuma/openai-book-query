@@ -1,3 +1,10 @@
 venv
 constants.py
 __pycache__
+sources
+ai_generated/data
+ai_generated/dumps
+ai_generated/embeds
+.vscode
+pnpm-lock.yaml
+templates
