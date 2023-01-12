@@ -175,7 +175,12 @@
     class="px-3 py-2 text-white bg-gray-800 rounded-lg">Search</button
   >
   {#if search_result}
-    {JSON.stringify(search_result)}
+    {#each search_result["text"] as txt, i}
+      <li>
+        <p>{txt}</p>
+        <p>({search_result["similiarities"][i]})</p>
+      </li>
+    {/each}
   {/if}
 </main>
 

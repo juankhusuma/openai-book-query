@@ -1,5 +1,4 @@
 import polars as pl
-import json
 import openai
 import sys
 from openai.embeddings_utils import get_embedding, cosine_similarity
@@ -33,7 +32,11 @@ def query(file, q, model="ada", n=3):
     df = df.lazy().with_column(
         pl.col("embed").apply(lambda emb: cosine_similarity(emb, search_query_emb)).alias("similarities")
     ).sort("similarities", reverse=True).fetch(n)
-    return json.loads(df.write_json())
+    
+    return {
+        "text": list(df["text"]),
+        "similiarities": list(df["similarities"])
+    }
 
 if __name__ == '__main__':
     embed("mind.pdf")

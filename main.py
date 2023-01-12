@@ -26,7 +26,6 @@ def embed_file():
 def search():
     q = request.args.get("q", None)
     f = request.args.get("f", None)
-    # n = int(request.args.get("n", None))
     model = request.args.get("model", None)
     return query(f, q, model, 3)
     
